@@ -183,4 +183,4 @@ const Page = `<html>
     </body>
 </html>`
  
-writeFileSync("./index.html", Page)
+writeFileSync("./dist/index.html", Page)

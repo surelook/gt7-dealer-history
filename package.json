@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "dependencies": {
+    "adm-zip": "^0.5.9",
+    "axios": "^0.27.2",
+    "csvtojson": "^2.0.10",
+    "node-fetch": "^3.2.10"
+  },
+  "scripts": {
+    "build": "node ./index.js"
+  }
+}

@@ -90,7 +90,8 @@ const stateLabel = (state) => {
     }
 }
 
-const Page = `<html>
+const Page = `<!DOCTYPE html>
+<html>
     <head>
         <title>GT7 Historic Stock Info</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

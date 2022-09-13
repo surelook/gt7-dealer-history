@@ -115,9 +115,6 @@ const Page = `<!DOCTYPE html>
         .discrete {
             color: #686a70;
         }
-        .table-container {
-            overflow-x: auto;
-        }
         table {
             table-layout: fixed;
             border-collapse: separate; /* Don't collapse */
@@ -136,6 +133,7 @@ const Page = `<!DOCTYPE html>
             background-color: #202229;
         }
         tbody th {
+            position: -webkit-sticky;
             position: sticky;
             left: 0;
             z-index: 1;
@@ -143,6 +141,7 @@ const Page = `<!DOCTYPE html>
             padding: 5px 10px;
         }
         thead th {
+            position: -webkit-sticky;
             position: sticky;
             top: 0;
             z-index: 2;
@@ -174,13 +173,13 @@ const Page = `<!DOCTYPE html>
             border-top: 2px solid #1c1e20;
             background-color: #202229;
             padding: 5px 10px;
+            position: -webkit-sticky;
             position: sticky;
             bottom: 0;
             left: 0;
             z-index: 4;
         }
         </style>
-        <div class="table-container">
         <table>
             <thead>
                 <th>
@@ -201,7 +200,6 @@ const Page = `<!DOCTYPE html>
         }).join('')}
             </tbody>
         </table>
-        </div>
         <div class="message">Data provided by <a href="https://ddm999.github.io/gt7info/">GT7 Info</a>. <span class="discrete">Last retrieved at ${Date()}</span></div>
     </body>
 </html>`

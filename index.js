@@ -2,7 +2,7 @@
 import axios from 'axios';
 import AdmZip from 'adm-zip';
 import csv from 'csvtojson'
-import {writeFileSync} from "fs"
+import fs, {writeFileSync} from "fs"
 
 async function get(url) {
     const options =  { 
@@ -184,4 +184,7 @@ const Page = `<!DOCTYPE html>
     </body>
 </html>`
 
-writeFileSync("index.html", Page)
+if (!fs.existsSync('dist')){
+    fs.mkdirSync('dist');
+}
+writeFileSync("dist/index.html", Page)

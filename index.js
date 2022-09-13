@@ -149,6 +149,9 @@ const Page = `<!DOCTYPE html>
         tbody td {
             text-align: center;
         }
+        .state {
+            cursor: default;
+        }
         .state.soldout {
             color: #a12a34;
         }

@@ -112,8 +112,11 @@ const Page = `<!DOCTYPE html>
         a {
             color: #45b0ff;
         }
+        .table-container {
+            overflow-x: auto;
+        }
         table {
-            layout: fixed;
+            table-layout: fixed;
             border-collapse: separate; /* Don't collapse */
             border-spacing: 0;
         }
@@ -174,6 +177,7 @@ const Page = `<!DOCTYPE html>
             z-index: 4;
         }
         </style>
+        <div class="table-container">
         <table>
             <thead>
                 <th>
@@ -194,6 +198,7 @@ const Page = `<!DOCTYPE html>
         }).join('')}
             </tbody>
         </table>
+        </div>
         <div class="message">Data provided by <a href="https://ddm999.github.io/gt7info/">GT7 Info</a>.</div>
     </body>
 </html>`

@@ -4,6 +4,10 @@ import AdmZip from 'adm-zip';
 import csv from 'csvtojson'
 import fs, {writeFileSync} from "fs"
 
+const monthNames = [
+    "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+];
+
 async function get(url) {
     const options =  { 
         method: 'GET',
@@ -41,11 +45,17 @@ const carOccurences = []
 
 const datesArray = []
 
+const parseDate = (dataString) => {
+    let [year, month, day] = (dataString.split('-'))
+    year = '20'.concat(year)
+    return new Date(`${year}-${month}-${day}`)
+}
+
 for await (let entry of lengendCsvData) {
 	let data = entry.getData().toString('utf8')
     let jsonData = await csv().fromString(data);
     let regex = new RegExp(/(\d{2}-\d{2}-\d{2})\.csv$/gm)
-    let date = regex.exec(entry.entryName)[1]
+    let date = parseDate(regex.exec(entry.entryName)[1])
     datesArray.push(date)
 
     jsonData.forEach(car => {
@@ -124,6 +134,7 @@ const Page = `<!DOCTYPE html>
             padding: 5px;
             border-bottom: 2px solid #1c1e20;
             background-color: #202024;
+            min-width: 1.4em;
         }
         th:first-child {
             border-right: 2px solid #1c1e20;
@@ -140,14 +151,19 @@ const Page = `<!DOCTYPE html>
             text-align: left;
             padding: 5px 10px;
         }
-        thead th {
+        thead tr {
             position: -webkit-sticky;
             position: sticky;
             top: 0;
             z-index: 2;
+        }
+        thead th {
+            padding-top: 1em;
             white-space: nowrap;
         }
         thead th:first-child {
+            position: sticky;
+            top: 0;
             left: 0;
             z-index: 3;
         }
@@ -169,6 +185,11 @@ const Page = `<!DOCTYPE html>
         .state.new {
             color: #95b217;
         }
+        .month-label {
+            position: absolute;
+            transform: translateY(-1.1em);
+            font-size: 0.8em;
+        }
         .message {
             border-top: 2px solid #1c1e20;
             background-color: #202229;
@@ -182,9 +203,17 @@ const Page = `<!DOCTYPE html>
         </style>
         <table>
             <thead>
+            <tr>
                 <th>
                 </th>
-                ${datesArray.map(date => `<th>${date}</th>`).join('')}
+                ${datesArray.map((date, index, array) => {
+                    let month
+                    if (index === 0 || array[index].getMonth() !== array[index - 1].getMonth()) {
+                        month = monthNames[array[index].getMonth()]
+                    }
+                    return `<th>${month ? `<span class="month-label">${month.slice(0, 3)}</span>` : ''}${date.getDate()}</th>`
+                }).join('')}
+            </tr>
             </thead>
             <tbody>
         ${Object.entries(carOccurencesById).map(([key, value]) =>  {
@@ -193,7 +222,7 @@ const Page = `<!DOCTYPE html>
             ${datesArray.map(date => {
                 return `<td>${(() => {
                     let entry = value.find(occurence => occurence.date === date)
-                    return `${entry ? `<span title="${stateLabel(entry.state)}&#10;${formatCredits(entry.price)}" class="state ${entry.state}">${stateIcon(entry.state)}</span>` : ''}`
+                    return `${entry ? `<span title="${entry.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}&#10;${stateLabel(entry.state)}&#10;${formatCredits(entry.price)}" class="state ${entry.state}">${stateIcon(entry.state)}</span>` : ''}`
                 })()}</td>`
             }).join('')}
         </tr>`

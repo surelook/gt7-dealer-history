@@ -113,6 +113,7 @@ const Page = `<!DOCTYPE html>
             color: #45b0ff;
         }
         table {
+            layout: fixed;
             border-collapse: separate; /* Don't collapse */
             border-spacing: 0;
         }

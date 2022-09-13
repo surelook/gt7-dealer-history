@@ -207,11 +207,11 @@ const Page = `<!DOCTYPE html>
                 <th>
                 </th>
                 ${datesArray.map((date, index, array) => {
-                    let month
+                    let label
                     if (index === 0 || array[index].getMonth() !== array[index - 1].getMonth()) {
-                        month = monthNames[array[index].getMonth()]
+                        label = `${monthNames[array[index].getMonth()]} ${array[index].getFullYear()}`
                     }
-                    return `<th>${month ? `<span class="month-label">${month.slice(0, 3)}</span>` : ''}${date.getDate()}</th>`
+                    return `<th>${label ? `<span class="month-label">${label}</span>` : ''}${date.getDate()}</th>`
                 }).join('')}
             </tr>
             </thead>

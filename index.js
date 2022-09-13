@@ -90,6 +90,10 @@ const stateLabel = (state) => {
     }
 }
 
+const formatCredits = (credits) => {
+    return `${credits.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} cr`
+}
+
 const Page = `<!DOCTYPE html>
 <html>
     <head>
@@ -179,7 +183,7 @@ const Page = `<!DOCTYPE html>
             ${datesArray.map(date => {
                 return `<td>${(() => {
                     let entry = value.find(occurence => occurence.date === date)
-                    return `${entry ? `<span title="${stateLabel(entry.state)}" class="state ${entry.state}">${stateIcon(entry.state)}</span>` : ''}`
+                    return `${entry ? `<span title="${formatCredits(entry.price)}" class="state ${entry.state}">${stateIcon(entry.state)}</span>` : ''}`
                 })()}</td>`
             }).join('')}
         </tr>`

@@ -1,1 +1,1 @@
-https://github.com/surelook/gt7-dealer-history
+https://surelook.github.io/gt7-dealer-history/

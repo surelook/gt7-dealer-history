@@ -112,6 +112,9 @@ const Page = `<!DOCTYPE html>
         a {
             color: #45b0ff;
         }
+        .discrete {
+            color: #686a70;
+        }
         .table-container {
             overflow-x: auto;
         }
@@ -199,7 +202,7 @@ const Page = `<!DOCTYPE html>
             </tbody>
         </table>
         </div>
-        <div class="message">Data provided by <a href="https://ddm999.github.io/gt7info/">GT7 Info</a>.</div>
+        <div class="message">Data provided by <a href="https://ddm999.github.io/gt7info/">GT7 Info</a>. <span class="discrete">Last retrieved at ${Date()}</span></div>
     </body>
 </html>`
 

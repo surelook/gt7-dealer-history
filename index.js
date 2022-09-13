@@ -115,6 +115,13 @@ const Page = `<!DOCTYPE html>
         td, th {
             padding: 5px;
             border-bottom: 2px solid #1c1e20;
+            background-color: #202024;
+        }
+        th:first-child {
+            border-right: 2px solid #1c1e20;
+        }
+        tr:hover td,
+        tr:hover th {
             background-color: #202229;
         }
         tbody th {
@@ -123,7 +130,6 @@ const Page = `<!DOCTYPE html>
             z-index: 1;
             text-align: left;
             padding: 5px 10px;
-            border-right: 2px solid #1c1e20;
         }
         thead th {
             position: sticky;

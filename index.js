@@ -69,10 +69,15 @@ for await (let entry of lengendCsvData) {
 }
 
 const carOccurencesById = carOccurences.reduce((acc, curr) => {
-    if(!acc[curr.id]) acc[curr.id] = [];
-    acc[curr.id].push(curr);
+    let pointer = acc.find(occurence => occurence[0].id === curr.id)
+    if (!pointer) {
+        acc.push([curr])
+    } else {
+        pointer.push(curr);
+    }
     return acc;
-},{});
+},[])
+console.log(carOccurencesById)
 
 const stateIcon = (state) => {
     switch(state) {
@@ -218,7 +223,7 @@ const Page = `<!DOCTYPE html>
             <tbody>
         ${Object.entries(carOccurencesById).map(([key, value]) =>  {
             return `<tr>
-            <th>${carsData.find(car => car.ID == key).ShortName}</th>
+            <th>${carsData.find(car => car.ID == value[0].id).ShortName}</th>
             ${datesArray.map(date => {
                 return `<td>${(() => {
                     let entry = value.find(occurence => occurence.date === date)

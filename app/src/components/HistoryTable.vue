@@ -28,12 +28,6 @@ import manufacturers from '../../data/manufacturers.json'
 import occurrences from '../../data/occurrences.json'
 import OccurenceState from './OccurenceState'
 
-const datesSet = new Set()
-
-for (let occurrence of occurrences) {
-  datesSet.add(occurrence.date)
-}
-
 export default {
   name: 'HistoryTable',
   components: {
@@ -43,8 +37,7 @@ export default {
       return {
           cars: [cars[0]],
           manufacturers: manufacturers,
-          occurrences: occurrences,
-          dates: datesSet
+          occurrences: occurrences
       }
   },
   computed: {
@@ -58,7 +51,15 @@ export default {
           }
           return acc;
         },[]);
+      },
+    dates() {
+      let datesSet = new Set()
+      for (let occurrence of occurrences) {
+        datesSet.add(occurrence.date)
       }
+
+      return datesSet
+    }
   },
   methods: {
     getCarById(id) {

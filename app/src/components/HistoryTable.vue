@@ -15,7 +15,7 @@
           <div class="car-label">{{getCarById(carOccurrences[0].id).ShortName}}</div>
         </th>
         <td v-for="(date, index) in dates" :key="index">
-          <OccurenceState :state="getStateByDate(carOccurrences, date)"/>
+          <OccurenceState v-if="getOccurrenceByDate(carOccurrences, date)" :occurrence="getOccurrenceByDate(carOccurrences, date)"/>
         </td>
       </tr>
     </tbody>
@@ -70,10 +70,6 @@ export default {
     },
     getOccurrenceByDate(occurrences, date) {
       return occurrences.find(occurrence => occurrence.date === date)
-    },
-    getStateByDate(occurrences, date) {
-      const occurrence = this.getOccurrenceByDate(occurrences, date)
-      if (occurrence) return occurrence.state
     }
   }
 }

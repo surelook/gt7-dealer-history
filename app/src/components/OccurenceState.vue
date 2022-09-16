@@ -2,40 +2,40 @@
     <div 
         @mouseover="hover=true"
         @mouseleave="hover=false" 
-        :class="['state', state]">
+        :class="['occurrence-state', occurrence.state]">
         <div v-html="icon"></div>
-        <OccurenceDetail v-if="hover" :state="state" />
+        <OccurenceDetail v-if="hover" :occurrence="occurrence" :label="label" :icon="icon" />
     </div>
 </template>
 
 <style scoped>
-    .state {
+    .occurrence-state {
         cursor: default;
     }
 
-    .normal {
-        color: red;
-    }
     .soldout {
         color: #a12a34;
     }
+
     .normal {
         color: #45b0ff;
     }
+
     .limited {
         color: #f3f629;
     }
+    
     .new {
         color: #95b217;
     }
 </style>    
 
 <script>
-import OccurenceDetail from "./OccurenceDetail.vue";
+import OccurenceDetail from "./OccurenceDetail";
 export default {
     name: "OccurenceState",
     props: {
-        state: String
+        occurrence: Object
     },
     data() {
         return {
@@ -44,7 +44,7 @@ export default {
     },
     computed: {
         icon() {
-            switch (this.state) {
+            switch (this.occurrence.state) {
                 default:
                     return;
                 case "limited":
@@ -58,7 +58,7 @@ export default {
             }
         },
         label() {
-            switch (this.state) {
+            switch (this.occurrence.state) {
                 default:
                     return;
                 case "limited":

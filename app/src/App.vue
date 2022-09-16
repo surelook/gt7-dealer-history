@@ -102,4 +102,7 @@ tbody td {
     left: 0;
     z-index: 4;
 }
+.manufacturer-label {
+    color: #686a70;
+}
 </style>

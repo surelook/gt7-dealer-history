@@ -1,7 +1,8 @@
 <template>
     <div class="occurrence-detail">
-        <div :class="['state-label',  occurrence.state]" ><span v-html="icon"></span> {{label}}</div>
+        <div :class="['icon',  occurrence.state]"><span v-html="icon"></span> {{label}}</div>
         <div>{{credits}}</div>
+        <div class="date">{{date}}</div>
     </div>
 </template>
 
@@ -18,8 +19,8 @@
         line-height: 1.4;
     }
 
-    .state-label {
-        color: pink;
+    .date {
+        color: #686a70;
     }
     
     .soldout {
@@ -33,7 +34,7 @@
     .limited {
         color: #f3f629;
     }
-    
+
     .new {
         color: #95b217;
     }
@@ -50,6 +51,9 @@ export default {
     computed: {
         credits() {
             return `${this.occurrence.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} cr`
+        },
+        date() {
+            return new Date(this.occurrence.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })
         }
     }
 }

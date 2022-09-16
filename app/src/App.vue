@@ -72,21 +72,6 @@ thead th:first-child {
 tbody td {
     text-align: center;
 }
-.state {
-    cursor: default;
-}
-.state.soldout {
-    color: #a12a34;
-}
-.state.normal {
-    color: #45b0ff;
-}
-.state.limited {
-    color: #f3f629;
-}
-.state.new {
-    color: #95b217;
-}
 .month-label {
     position: absolute;
     transform: translateY(-1.1em);
@@ -99,10 +84,13 @@ tbody td {
     position: -webkit-sticky;
     position: sticky;
     bottom: 0;
-    left: 0;
     z-index: 4;
 }
 .manufacturer-label {
     color: #686a70;
+}
+.car-label {
+    height: 2.4em;
+    overflow: hidden;
 }
 </style>

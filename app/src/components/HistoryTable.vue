@@ -11,8 +11,8 @@
     <tbody>
       <tr v-for="(carOccurrences, index) in occurrencesByCarId" :key="index">
         <th>
-          <strong class="manufacturer-label"><small>{{getManufacturerById(getCarById(carOccurrences[0].id).Maker).Name}}</small></strong><br />
-          {{getCarById(carOccurrences[0].id).ShortName}}
+          <strong class="manufacturer-label"><small>{{getManufacturerById(getCarById(carOccurrences[0].id).Maker).Name}}</small></strong>
+          <div class="car-label">{{getCarById(carOccurrences[0].id).ShortName}}</div>
         </th>
         <td v-for="(date, index) in dates" :key="index">
           <OccurenceState :state="getStateByDate(carOccurrences, date)"/>

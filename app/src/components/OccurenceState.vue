@@ -11,6 +11,19 @@
 <style scoped>
     .occurrence-state {
         cursor: default;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 3em;
+        height: 100%;
+    }
+
+    .occurrence-state:hover {
+        border-radius: 5px;
+        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 16%);
+        border: 1px solid hsla(0,0%,100%,.08);
+        background-color: #202024;
     }
 
     .soldout {
@@ -24,7 +37,7 @@
     .limited {
         color: #f3f629;
     }
-    
+
     .new {
         color: #95b217;
     }

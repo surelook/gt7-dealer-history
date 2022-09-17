@@ -1,6 +1,6 @@
 <template>
     <div class="occurrence-detail">
-        <div :class="['icon',  occurrence.state]"><span v-html="icon"></span> {{label}}</div>
+        <div :class="[occurrence.state]">{{label}}</div>
         <div>{{credits}}</div>
         <div class="date">{{date}}</div>
     </div>
@@ -10,6 +10,9 @@
     .occurrence-detail {
         position: absolute;
         background-color: #202024;
+        left: calc(100% + 2px);
+        top: -1px;
+        width: 200px;
         padding: 1em;
         color: #b0b6c4;
         border-radius: 5px;
@@ -17,6 +20,8 @@
         border: 1px solid hsla(0,0%,100%,.08);
         text-align: left;
         line-height: 1.4;
+        z-index: 2;
+        pointer-events: none;
     }
 
     .date {

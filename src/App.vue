@@ -6,12 +6,28 @@
 <script>
 import DisclosureMessage from './components/DisclosureMessage.vue'
 import HistoryTable from './components/HistoryTable.vue'
+import Analytics from 'analytics'
+import googleAnalytics from '@analytics/google-analytics'
 
 export default {
   name: 'App',
   components: {
     DisclosureMessage,
     HistoryTable
+  },
+  mounted() {
+    if (process.env.GA_TRACKING_ID) {
+    const analytics = Analytics({
+        app: document.title,
+        plugins: [
+          googleAnalytics({
+            trackingId: process.env.GA_TRACKING_ID
+          })
+        ]
+      })
+
+    analytics.page()
+    }
   }
 }
 </script>

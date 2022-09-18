@@ -31,11 +31,6 @@ a {
 .discrete {
     color: #686a70;
 }
-.month-label {
-    position: absolute;
-    transform: translateY(-1.1em);
-    font-size: 0.8em;
-}
 .message {
     border-top: 2px solid #1c1e20;
     background-color: #202229;

@@ -4,8 +4,8 @@
       <tr>
         <th><input v-model="searchTerm" placeholder="Filter" type="text"/></th>
         <th v-for="(date, index) in dates" :key="index">
-          <span v-if="new Date(date).getMonth() !== new Date(dates[index - 1]).getMonth()">{{new Date(date).getMonth()}}</span>
-          {{new Date(date).getDate()}}
+          <div class="month-label" v-if="date.month">{{date.month}}</div>
+          <div class="date-label">{{new Date(date.date).getDate()}}</div>
         </th>
       </tr>
     </thead>
@@ -15,7 +15,12 @@
           <CarDetail :car="getCarById(carOccurrences[0].id)" />
         </th>
         <td v-for="(date, index) in dates" :key="index">
-          <OccurenceState :occurrence="getOccurrenceByDate(carOccurrences, date)"/>
+          <OccurenceState :occurrence="getOccurrenceByDate(carOccurrences, date.date)"/>
+        </td>
+      </tr>
+      <tr v-if="occurrencesByCarId.length < 1">
+        <th>No results: zero, zip, zilch, nada</th>
+        <td v-for="(date, index) in dates" :key="index">
         </td>
       </tr>
     </tbody>
@@ -31,6 +36,7 @@
     width: 9em;
     padding: 0.2em 0.5em;
     border-radius: 3px;
+    font-weight: bold;
   }
   table {
       table-layout: fixed;
@@ -76,6 +82,11 @@
 
   thead th {
       white-space: nowrap;
+      padding-top: 1.5em;
+  }
+  
+  thead th:has(.month-label) {
+    position: relative;
   }
 
   thead th:first-child {
@@ -88,6 +99,19 @@
   tbody td {
       text-align: center;
   }
+
+  .date-label {
+    width: 3em;
+  }
+
+  .month-label {
+    position: absolute;
+    color: #686a70;
+    font-weight: bold;
+    left: 1.5em;
+    top: 0.5em;
+    font-size: 0.8em;
+  }
 </style>
 
 <script>
@@ -97,6 +121,10 @@ import manufacturers from '../../data/manufacturers.json'
 import OccurenceState from './OccurenceState.vue'
 import CarDetail from './CarDetail.vue'
 import { Car } from '../model/Car'
+
+const monthNames = [
+    "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+];
 
 export default {
   name: 'HistoryTable',
@@ -132,12 +160,27 @@ export default {
         });
       },
     dates() {
-      let datesSet = new Set()
-      for (let occurrence of occurrences) {
-        datesSet.add(occurrence.date)
+      let dates = []
+
+      for (let [index, occurrence] of occurrences.entries()) {
+        let existing = dates.find(entry => entry.date === occurrence.date)
+
+        if (existing) {
+          continue
+        }
+
+        let newEntry = {
+          date: occurrence.date
+        }
+
+        if (index < 1 || new Date(occurrence.date).getMonth() !== new Date(occurrences[index - 1].date).getMonth()) {
+          newEntry.month = monthNames[new Date(occurrence.date).getMonth() - 1]
+        }
+
+        dates.push(newEntry)
       }
 
-      return datesSet
+      return dates
     }
   },
   methods: {

@@ -8,10 +8,6 @@ const carsDataRegex = new RegExp(/^.*\/_data\/db\/cars.csv$/);
 const manufacturersDataRegex = new RegExp(/^.*\/_data\/db\/maker.csv$/);
 const legendDataRegex = new RegExp(/^.*\/_data\/legend\/\d{2}-\d{2}-\d{2}.csv$/);
 
-const monthNames = [
-    "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-];
-
 const parseDate = (dataString) => {
     let [year, month, day] = (dataString.split('-'))
     year = '20'.concat(year)

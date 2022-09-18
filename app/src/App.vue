@@ -1,13 +1,16 @@
 <template>
   <HistoryTable />
+  <DisclosureMessage />
 </template>
 
 <script>
+import DisclosureMessage from './components/DisclosureMessage.vue'
 import HistoryTable from './components/HistoryTable.vue'
 
 export default {
   name: 'App',
   components: {
+    DisclosureMessage,
     HistoryTable
   }
 }
@@ -30,14 +33,5 @@ a {
 }
 .discrete {
     color: #686a70;
-}
-.message {
-    border-top: 2px solid #1c1e20;
-    background-color: #202229;
-    padding: 5px 10px;
-    position: -webkit-sticky;
-    position: sticky;
-    bottom: 0;
-    z-index: 4;
 }
 </style>

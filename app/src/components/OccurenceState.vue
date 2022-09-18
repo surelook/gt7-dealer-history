@@ -1,11 +1,13 @@
 <template>
     <div 
+        v-if="occurrence"
         @mouseover="hover=true"
         @mouseleave="hover=false" 
         :class="['occurrence-state', occurrence.state]">
         <div v-html="icon"></div>
         <OccurenceDetail v-if="hover" :occurrence="occurrence" :label="label" :icon="icon" />
     </div>
+    <div class="occurrence-state empty" v-else></div>
 </template>
 
 <style scoped>
@@ -19,7 +21,7 @@
         height: 100%;
     }
 
-    .occurrence-state:hover {
+    .occurrence-state:not(.empty):hover {
         border-radius: 5px;
         box-shadow: 0 1px 2px 0 rgb(0 0 0 / 16%);
         border: 1px solid hsla(0,0%,100%,.08);

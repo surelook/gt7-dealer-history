@@ -1,5 +1,5 @@
 <template>
-    <div @mouseenter="hover = true" @mouseleave="hover = false"  class="car-detail">
+    <div @mouseenter="hover = true" @mouseleave="hover = false"  :class="['car-detail', {hover: hover}]">
         <strong class="manufacturer-label"><small>{{manufacturer.Name}}</small></strong>
         <div class="car-label">{{car.ShortName}}</div>
         <div v-if="hover" class="expanded">
@@ -12,15 +12,18 @@
 <style scoped>
     .car-detail {
         padding: 0.5em;
-        width: 150px;
+        width: 9em;
         position: relative;
+    }
+    .car-detail.hover {
+        z-index: 100;
     }
     .manufacturer-label {
         color: #686a70;
     }
     .car-label {
-        height: 2.4em;
-        min-height: 2.4em;
+        height: 1.4em;
+        min-height: 1.4em;
         overflow: hidden;
     }
     .expanded {
@@ -29,12 +32,12 @@
         background-color: #202024;
         box-shadow: 0 1px 2px 0 rgb(0 0 0 / 16%);
         border: 1px solid hsla(0,0%,100%,.08);
-        pointer-events: none;
+        /* pointer-events: none; */
         position: absolute;
         z-index: 10;
         top: -1px;
         left: -1px;
-        width: 100%;
+        right: -1px;
     }
 
     .expanded .car-label {

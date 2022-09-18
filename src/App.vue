@@ -27,6 +27,7 @@ body {
     background-color: #1c1e20;
     min-height: 100vh;
     color: #b0b6c4;
+    margin-bottom: 28px;
 }
 a {
     color: #45b0ff;

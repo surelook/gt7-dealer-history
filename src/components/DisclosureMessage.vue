@@ -7,10 +7,14 @@
         border-top: 2px solid #1c1e20;
         background-color: #202229;
         padding: 5px 10px;
-        position: -webkit-sticky;
-        position: sticky;
+        position: fixed;
+        height: 28px;
+        overflow-x: scroll;
         bottom: 0;
+        left: 0;
+        right: 0;
         z-index: 4;
+        white-space: nowrap;
     }
 </style>
 

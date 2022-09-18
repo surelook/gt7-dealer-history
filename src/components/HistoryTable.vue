@@ -59,8 +59,14 @@
   }
   tbody tr:hover td,
   tbody tr:hover th {
-      background-color: #202229;
+      border-top: 1px solid hsla(0,0%,100%,.06);
+      border-bottom: 1px solid hsla(0,0%,100%,.06);
+      background-color: #2a2c2e;
   }
+  /* tbody tr:hover td:nth-child(odd), 
+  tbody tr:hover th:nth-child(odd) {
+    background-color: #1F2123;
+  } */
   tbody th {
       position: -webkit-sticky;
       position: sticky;

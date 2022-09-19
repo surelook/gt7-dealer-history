@@ -16,12 +16,12 @@ export default {
     HistoryTable
   },
   mounted() {
-    if (process.env.GA_TRACKING_ID) {
+    if (process.env.VUE_APP_GA_TRACKING_ID) {
     const analytics = Analytics({
         app: document.title,
         plugins: [
           googleAnalytics({
-            trackingId: process.env.GA_TRACKING_ID
+            trackingId: process.env.VUE_APP_GA_TRACKING_ID
           })
         ]
       })

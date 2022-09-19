@@ -1,5 +1,5 @@
 <template>
-    <div class="occurrence-detail">
+    <div ref="root" :class="['occurrence-detail', {left, top}]">
         <div :class="[occurrence.state]">{{label}}</div>
         <div>{{credits}}</div>
         <div class="date">{{date}}</div>
@@ -22,6 +22,16 @@
         line-height: 1.4;
         z-index: 2;
         pointer-events: none;
+    }
+
+    .left {
+        left: auto;
+        right: calc(100% + 2px);
+    }
+
+    .top {
+        top: auto;
+        bottom: -1px;
     }
 
     .date {
@@ -52,6 +62,17 @@ export default {
         occurrence: Object,
         label: String,
         icon: String
+    },
+    data() {
+        return {
+            left: false,
+            top: false
+        }
+    },
+    mounted() {
+        const boundingRect = this.$refs.root.getBoundingClientRect()
+        this.left = boundingRect.right > window.innerWidth - 10
+        this.top = boundingRect.bottom > window.innerHeight - 38
     },
     computed: {
         credits() {

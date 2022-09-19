@@ -22,7 +22,7 @@ export default {
         app: document.title,
         plugins: [
           googleAnalytics({
-            trackingId: process.env.VUE_APP_GA_TRACKING_ID
+            measurementIds: [process.env.VUE_APP_GA_TRACKING_ID]
           })
         ]
       })

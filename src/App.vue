@@ -16,7 +16,6 @@ export default {
     HistoryTable
   },
   mounted() {
-    console.log('id', process.env.VUE_APP_GA_TRACKING_ID)
     if (process.env.VUE_APP_GA_TRACKING_ID) {
     const analytics = Analytics({
         app: document.title,

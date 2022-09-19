@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-        GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
+        VUE_APP_GA_TRACKING_ID: ${{ secrets.VUE_APP_GA_TRACKING_ID }}
 
     strategy:
       matrix:
@@ -34,11 +34,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: 'Create env file'
-        run: |
-          touch .env
-          echo VUE_APP_GA_TRACKING_ID=${{ secrets.VUE_APP_GA_TRACKING_ID }} >> .env
-          cat .env
       - run: npm ci
       - run: npm run build --if-present
       - name: Setup Pages

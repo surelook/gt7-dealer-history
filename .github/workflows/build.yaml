@@ -23,7 +23,7 @@ jobs:
 
     env:
         GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
-        BASE_URL: ${{ github.event.repository.name }}
+        BASE_URL: /${{ github.event.repository.name }}/
 
     strategy:
       matrix:

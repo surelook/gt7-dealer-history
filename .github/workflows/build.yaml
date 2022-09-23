@@ -30,6 +30,11 @@ jobs:
         node-version: [16.x]
 
     steps:
+      - name: Dump github steps
+        run:   echo "$GITHUB_STEPS"
+        shell: bash
+        env:
+          GITHUB_CONTEXT: ${{ toJson(steps) }}
       - name: Dump github context
         run:   echo "$GITHUB_CONTEXT"
         shell: bash

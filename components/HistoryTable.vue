@@ -121,9 +121,9 @@
 </style>
 
 <script>
-import cars from '../../data/cars.json'
-import occurrences from '../../data/occurrences.json'
-import manufacturers from '../../data/manufacturers.json'
+import cars from '../data/cars.json'
+import occurrences from '../data/occurrences.json'
+import manufacturers from '../data/manufacturers.json'
 import OccurenceState from './OccurenceState.vue'
 import CarDetail from './CarDetail.vue'
 import { Car } from '../model/Car'

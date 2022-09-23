@@ -1,4 +1,4 @@
-import manufactureres from '../../data/manufacturers.json'
+import manufactureres from '../data/manufacturers.json'
 import { Manufacturer } from './Manufacturer'
 export class Car {
     constructor(car) {

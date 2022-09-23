@@ -19,7 +19,7 @@
 </style>
 
 <script>
-    import date from '../../data/date.json'
+    import date from '../data/date.json'
 
     export default {
         name: "DisclosureMessage",

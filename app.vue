@@ -16,17 +16,19 @@ export default {
     HistoryTable
   },
   mounted() {
-    if (process.env.VUE_APP_GA_TRACKING_ID) {
-    const analytics = Analytics({
-        app: document.title,
-        plugins: [
-          googleAnalytics({
-            measurementIds: [process.env.VUE_APP_GA_TRACKING_ID]
-          })
-        ]
-      })
+    const config = useRuntimeConfig()
 
-    analytics.page()
+    if (config.gaTrackingId) {
+      const analytics = Analytics({
+          app: 'Deal',
+          plugins: [
+            googleAnalytics({
+              measurementIds: [config.gaTrackingId]
+            })
+          ]
+        })
+
+      analytics.page()
     }
   }
 }

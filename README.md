@@ -1,26 +1,42 @@
-# GT7 Dealer History
+# Nuxt 3 Minimal Starter
 
-https://surelook.github.io/gt7-dealer-history/
+Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
-## Project setup
-```
+## Setup
+
+Make sure to install the dependencies:
+
+```bash
+# yarn
+yarn install
+
+# npm
 npm install
+
+# pnpm
+pnpm install --shamefully-hoist
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+## Development Server
+
+Start the development server on http://localhost:3000
+
+```bash
+npm run dev
 ```
 
-### Compiles and minifies for production
-```
+## Production
+
+Build the application for production:
+
+```bash
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
+Locally preview production build:
+
+```bash
+npm run preview
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.

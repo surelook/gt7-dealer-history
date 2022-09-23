@@ -46,7 +46,7 @@
 </style>    
 
 <script>
-import manufacturers from '../../data/manufacturers.json'
+import manufacturers from '../data/manufacturers.json'
 
 export default {
     name: 'CarDetail',

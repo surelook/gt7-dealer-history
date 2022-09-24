@@ -1,5 +1,5 @@
 <template>
-    <div class="message">Data provided by <a href="https://ddm999.github.io/gt7info/">GT7 Info</a>. <span class="discrete">Last retrieved at {{date}}</span></div>
+    <div class="message">Data provided by <a href="https://ddm999.github.io/gt7info/" target="_blank">GT7 Info</a>. Send feedback on <a href="https://github.com/surelook/gt7-dealer-history/issues" target="_blank">GitHub</a>. <span class="discrete">Last retrieved at {{date}}</span></div>
 </template>
 
 <style scoped>

@@ -180,7 +180,7 @@ export default {
         }
 
         if (index < 1 || new Date(occurrence.date).getMonth() !== new Date(occurrences[index - 1].date).getMonth()) {
-          newEntry.month = monthNames[new Date(occurrence.date).getMonth() - 1]
+          newEntry.month = monthNames[new Date(occurrence.date).getMonth()]
         }
 
         dates.push(newEntry)

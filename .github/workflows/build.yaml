@@ -23,18 +23,13 @@ jobs:
 
     env:
         GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
-        BASE_URL: /${{ github.event.repository.name }}/
+        BASE_URL: /gt-dealer-history/
 
     strategy:
       matrix:
         node-version: [16.x]
 
     steps:
-      - name: Dump github steps
-        run:   echo "$GITHUB_STEPS"
-        shell: bash
-        env:
-          GITHUB_CONTEXT: ${{ toJson(steps) }}
       - name: Dump github context
         run:   echo "$GITHUB_CONTEXT"
         shell: bash

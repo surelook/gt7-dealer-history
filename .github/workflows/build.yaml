@@ -23,7 +23,7 @@ jobs:
 
     env:
         GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
-        BASE_URL: /gt-dealer-history/
+        BASE_URL: /gt7-dealer-history/
 
     strategy:
       matrix:

@@ -23,18 +23,17 @@ jobs:
 
     env:
         GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
-        BASE_URL: /gt7-dealer-history/
 
     strategy:
       matrix:
         node-version: [16.x]
 
     steps:
-      - name: Dump github context
-        run:   echo "$GITHUB_CONTEXT"
-        shell: bash
-        env:
-          GITHUB_CONTEXT: /${GITHUB_REPOSITORY#*/}/
+      - uses: jungwinter/split@v2
+        id: split
+        with:
+          msg: ${{ github.repository }}
+          separator: /
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -42,6 +41,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run generate
+        env:
+            BASE_URL: /${{ steps.split.outputs._1 }}/
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact

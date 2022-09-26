@@ -7,7 +7,10 @@ export default defineNuxtConfig({
         title: 'GT7 Dealer History',
         htmlAttrs: {
             lang: 'en'
-        }
+        },
+        meta: [
+            { name: 'description', content: 'Historical availability of GT7 Legendary Dealership cars - surelook' }
+        ]
     },
     publicRuntimeConfig: {
         gaTrackingId: process.env.GA_TRACKING_ID

@@ -3,8 +3,11 @@ export default defineNuxtConfig({
     app: {
         baseURL: process.env.BASE_URL
     },
-    head: {
+    meta: {
         title: 'GT7 Dealer History',
+        htmlAttrs: {
+            lang: 'en'
+        }
     },
     publicRuntimeConfig: {
         gaTrackingId: process.env.GA_TRACKING_ID
